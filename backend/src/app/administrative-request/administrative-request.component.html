@@ -1,0 +1,77 @@
+<div class="container mt-4">
+  <h2>Administrative Request Form</h2>
+
+  <form [formGroup]="administrativeRequestForm" (ngSubmit)="submitAdministrativeRequest()">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="fullName">Full Name:</label>
+        <input type="text" class="form-control" id="fullName" formControlName="fullName" required>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="service">Service:</label>
+      <input type="text" class="form-control" id="service" formControlName="service" required>
+    </div>
+
+    <div class="form-group">
+      <label for="reasonForRequest">Reasons For Request:</label>
+      <input type="text" class="form-control" id="reasonForRequest" formControlName="reasonForRequest" required >
+    </div>
+    <div class="form-group">
+      <label for="file1">File</label>
+        <div  id="file1" class="md-form md-outline input-with-post-icon datepicker" inline="true">
+        <input   type="file" id="file1" (change)="recuperFile($event);" class="form-control" >
+          <i class="fas fa-calendar input-prefix"></i>
+       </div></div>
+
+    <div class="form-group">
+      <label for="typeOfDocumentRequested">Document Type:</label>
+      <select (change)="SelctOption($event)" class="form-control" id="typeOfDocumentRequested" formControlName="typeOfDocumentRequested" required >
+        <option value="salary Certificate">Salary Certificate</option>
+        <option value="Work certificate">Work Certificate</option>
+      </select>
+    </div>
+
+    <div *ngIf="administrativeRequestForm.get('typeOfDocumentRequested')?.value === 'salary Certificate'">
+      <div class="form-group">
+        <label for="baseSalary">Base Salary:</label>
+        <input type="text" class="form-control" id="baseSalary" formControlName="baseSalary" required >
+      </div>
+      <div class="form-group">
+        <label for="netSalary">Net Salary:</label>
+        <input type="text" class="form-control" id="netSalary" formControlName="netSalary" required >
+      </div>
+    </div>
+
+    <div *ngIf="administrativeRequestForm.get('typeOfDocumentRequested')?.value === 'Work certificate'">
+      <div class="form-group">
+        <label for="hoursWorked">Hours Worked:</label>
+        <input type="text" class="form-control" id="hoursWorked" formControlName="hoursWorked" required >
+      </div>
+      <div class="form-group">
+        <label for="hoursWorkedPerWeek">Hours Worked Per Week:</label>
+        <input type="text" class="form-control" id="hoursWorkedPerWeek" formControlName="hoursWorkedPerWeek" required >
+      </div>
+      <div class="form-group">
+        <label for="startDateOfEmployment">Start Date Of Employment:</label>
+        <input type="text" class="form-control" id="startDateOfEmployment" formControlName="startDateOfEmployment" required >
+      </div>
+
+
+      <div class="form-group">
+        <label for="typeOfContract">Type Of Contract:</label>
+        <select class="form-control" id="typeOfContract" formControlName="typeOfContract" required >
+          <option value="full_time_contract">Full-time contract</option>
+          <option value="part_time_contract">Part-time contract</option>
+        </select>
+      </div>
+    </div>
+
+    <div>
+      <button type="submit" class="btn btn-primary">Submit Request</button>
+      <hr>
+    </div>
+
+  </form>
+</div>

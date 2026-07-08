@@ -1,0 +1,25 @@
+:root {
+  --bgColor_light: #f0f0f0;
+  --textColor_light: #333;
+  --borderColor_light: #ccc;
+
+  --bgColor_dark: #333;
+  --textColor_dark: #fff;
+  --borderColor_dark: #666;
+}
+
+body.light {
+  --bgColor: var(--bgColor_light);
+  --textColor: var(--textColor_light);
+  --borderColor: var(--borderColor_light);
+  background-color: var(--bgColor);
+  color: var(--textColor);
+}
+
+body.dark {
+  --bgColor: var(--bgColor_dark);
+  --textColor: var(--textColor_dark);
+  --borderColor: var(--borderColor_dark);
+  background-color: var(--bgColor);
+  color: var(--textColor);
+}

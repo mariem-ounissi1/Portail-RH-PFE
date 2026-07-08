@@ -1,0 +1,34 @@
+<h2>Professional Mutation Request </h2>
+
+
+<form [formGroup]="professionalMutationRequestForm"   (ngSubmit)="submitProfessionalMutationRequest()">
+  <div class="form-group">
+    <label for="fullName">Full Name:</label>
+    <input type="text" class="form-control" id="fullName" name="fullName" formControlName="fullName" readonly >
+  </div>
+  <div class="form-group">
+    <label for="currentPosition">Current Position:</label>
+    <input type="text" class="form-control" id="currentPosition" name="currentPosition" formControlName="currentPosition" required>
+  </div>
+  <div class="form-group">
+    <label for="reasonForMutation">Reason for Mutation:</label>
+    <textarea class="form-control" id="reasonForMutation" name="reasonForMutation" formControlName="reasonForMutation"  required></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="file1">File</label>
+      <div  id="file1" class="md-form md-outline input-with-post-icon datepicker" inline="true">
+      <input  placeholder="Select date" type="file" id="file1" (change)="recuperFile($event);" class="form-control">
+        <i class="fas fa-calendar input-prefix"></i>
+     </div></div>
+  <div class="form-group">
+    <label for="proposedDateOfMutation">Proposed Date of Mutation:</label>
+    <input type="date" class="form-control" id="proposedDateOfMutation" name="proposedDateOfMutation" formControlName="proposedDateOfMutation"  required>
+  </div>
+
+
+
+
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

@@ -1,0 +1,22 @@
+.gradient-custom-2 {
+    /* fallback for old browsers */
+    background: #fbc2eb;
+
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(251, 194, 235, 1), rgba(166, 193, 238, 1));
+
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(251, 194, 235, 1), rgba(166, 193, 238, 1))
+    }
+    .card {
+      transition: all 0.3s ease;
+    }
+
+    .card.active {
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+    .position-absolute:hover {
+      cursor: pointer;
+      transform: translate(-50%, -50%) scale(1.1);
+      transition: transform 0.3s ease;
+    }

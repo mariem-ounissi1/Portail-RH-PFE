@@ -1,0 +1,83 @@
+
+
+<div class="container mt-4">
+  <h2>Authorization Request Form</h2>
+
+  <form [formGroup]="authorizationForm" (ngSubmit)="submitAuthorizationRequest()">
+
+
+        <div class="form-group">
+          <label for="full_username">Full Name :</label>
+          <input type="text" class="form-control" id="full_username" formControlName="full_username" readonly >
+        </div>
+
+        <div class="form-group">
+          <label for="service">Service :</label>
+          <input type="text" class="form-control" id="service" formControlName="service" readonly >
+        </div>
+
+
+
+    <div class="form-group">
+      <label for="position">Position:</label>
+      <input type="text" class="form-control" id="position" formControlName="position" readonly >
+    </div>
+
+    <label for="date_debut">Start Date</label>
+    <div id="date_debut" class="md-form md-outline input-with-post-icon datepicker" inline="true">
+      <input formControlName="date_debut" placeholder="Select date" type="date" id="date_debut" class="form-control" >
+      <i class="fas fa-calendar input-prefix"></i>
+    </div>
+
+    <label for="date_fin">End Date</label>
+    <div id="date_fin" class="md-form md-outline input-with-post-icon datepicker" inline="true">
+      <input formControlName="date_fin" placeholder="Select date" type="date" id="date_fin" class="form-control" >
+      <i class="fas fa-calendar input-prefix"></i>
+    </div>
+
+    <label for="file1">File</label>
+    <div  id="file1" class="md-form md-outline input-with-post-icon datepicker" inline="true">
+        <input type="file" id="file1" (change)="recuperFile($event);" class="form-control">
+        <i class="fas fa-calendar input-prefix"></i>
+    </div>
+
+
+
+    <div class="form-group">
+      <label for="type">Authorization Type :</label>
+      <select class="form-control" id="type" formControlName="type" required>
+        <option value="remote_work">Remote Work</option>
+        <option value="overtime_authorization">Overtime Authorization</option>
+        <option value="early_leave">Early Leave</option>
+        <option value="late_arrival">Late Arrival</option>
+        <option value="training_authorization">Training Authorization</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="reason">Reasons :</label>
+      <input type="text" class="form-control" id="reason" formControlName="reason" required>
+    </div>
+
+
+
+
+
+    <!-- Add more form fields as needed -->
+
+    <button type="submit" class="btn btn-primary">Submit  Request</button>
+
+
+
+  </form>
+
+  <div *ngIf="authorizationForm.errors?.['invalidDateRange']">
+    <div class="alert alert-danger" role="alert">
+      End date should be later than start date!
+    </div>
+  </div>
+
+
+</div>
+
+

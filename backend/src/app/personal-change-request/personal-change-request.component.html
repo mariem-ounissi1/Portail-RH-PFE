@@ -1,0 +1,57 @@
+
+
+<div class="container mt-4">
+  <h2>Personal Change Request Form</h2>
+
+  <form [formGroup]="personalChangeRequestForm" (ngSubmit)="submitPersonalChangeRequest()">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="fullName">Full Name:</label>
+          <input type="text" class="form-control" id="fullName" name="fullName" formControlName="fullName" readonly >
+        </div>
+        <div class="form-group">
+          <label for="changeDetails">Reasons Change Details:</label>
+          <input type="text" class="form-control" id="changeDetails" formControlName="changeDetails" required>
+        </div>
+      </div>
+
+
+      </div>
+
+
+
+    <div class="form-group">
+      <label for="processingDate">Processing Date:</label>
+      <input type="date" class="form-control" id="processingDate" formControlName="processingDate" required>
+    </div>
+
+
+
+
+    <div class="form-group">
+      <label for="changeType" >Demand Type:</label>
+      <select (change)="SelctOption($event)" class="form-control" id="changeType" formControlName="changeType" required>
+
+        <option value="birthDate">Birthday</option>
+        <option value="Service">Service</option>
+        <option value="email">E-mail</option>
+        <option value="civility">Civility</option>
+        <option value="post">personal</option>
+        <option value="address">Address</option>
+      </select>
+    </div>
+    <div class="form-group" *ngIf="showInput&&TestOption!='Birthday'">
+      <input formControlName="valueChange" type="text" class="form-control" [placeholder]="TestOption" >
+    </div>
+    <div class="form-group" *ngIf="showInput&&TestOption=='Birthday'">
+      <input formControlName="valueChange" type="date" class="form-control" [placeholder]="TestOption" >
+    </div>
+
+    <!-- Add more form fields as needed -->
+
+    <button type="submit" class="btn btn-primary">Submit Request</button>
+  </form>
+
+  <hr>
+</div>

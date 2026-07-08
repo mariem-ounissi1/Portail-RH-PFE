@@ -1,0 +1,45 @@
+
+
+<div>
+  <h2> Administrative Request Liste </h2>
+  <table class="table table-striped table-bordered table-hover table-sm">
+    <thead>
+      <tr>
+
+        <th>Service</th>
+        <th>Type Document</th>
+        <th>Reasons Request</th>
+        <th>Base Salary</th>
+        <th>Net salary</th>
+        <th>Hours Worked</th>
+        <th>Hours Worked Per week</th>
+        <th>Start Date Of Employee</th>
+        <th>Type Contrat</th>
+        <th>File</th>
+        <th>Status</th>
+        <th>Download Authorization Request</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let request of administrativeRequest ">
+
+        <td>{{ request.service }}</td>
+        <td>{{ request.typeOfDocumentRequested }}</td>
+        <td>{{ request.reasonForRequest }}</td>
+        <td>{{request.baseSalary}}</td>
+        <td>{{request.netSalary}}</td>
+        <td>{{request.hoursWorked}}</td>
+        <td>{{request.hoursWorkedPerWeek}}</td>
+        <td>{{ request.startDateOfEmployment | date:'yMMMd'}}</td>
+        <td>{{ request.typeOfContract }}</td>
+
+        <td>  <button (click)="downloadBase64PDF(request.file1, request.user.username)" *ngIf=" request.file1" > download </button></td>
+        <td>{{ request.status }}</td>
+        <td>  <button *ngIf="request.status === 'Approved'" (click)="downloadPDF(request)">Download PDF</button>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+

@@ -1,0 +1,39 @@
+:root {
+  --bgColor_light: #f0f0f0;
+  --textColor_light: #333;
+  --borderColor_light: #ccc;
+
+  --bgColor_dark: #333;
+  --textColor_dark: #fff;
+  --borderColor_dark: #666;
+}
+
+body.light {
+  --bgColor: var(--bgColor_light);
+  --textColor: var(--textColor_light);
+  --borderColor: var(--borderColor_light);
+}
+
+body.dark {
+  --bgColor: var(--bgColor_dark);
+  --textColor: var(--textColor_dark);
+  --borderColor: var(--borderColor_dark);
+}
+
+main {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--bgColor);
+  color: var(--textColor);
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    --bgColor: var(--bgColor_dark);
+    --textColor: var(--textColor_dark);
+    --borderColor: var(--borderColor_dark);
+  }
+}

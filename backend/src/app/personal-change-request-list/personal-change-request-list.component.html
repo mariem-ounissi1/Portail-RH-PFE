@@ -1,0 +1,35 @@
+
+
+<div>
+  <h2> liste Personal Change Request </h2>
+  <table class="table table-striped table-bordered table-hover table-sm">
+    <thead>
+      <tr>
+
+        <th>changeDetails</th>
+        <th>processingDate</th>
+        <th>dateOfCreation</th>
+        <th>changeType</th>
+        <th>Value Change</th>
+        <th>status</th>
+        <th>Download Personal Change Request</th>
+
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let request of personalChangeRequests">
+
+        <td>{{ request.changeDetails }}</td>
+        <td>{{ request.processingDate |  date:'yMMMd'}}</td>
+        <td>{{ request.dateOfCreation | date:'short'}}</td>
+        <td>{{ request.changeType }}</td>
+        <td>{{ request.valueChange}}</td>
+        <td>{{ request.status }}</td>
+        <td>  <button *ngIf="request.status === 'Approved'" (click)="downloadPDF(request)">Download PDF</button>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+

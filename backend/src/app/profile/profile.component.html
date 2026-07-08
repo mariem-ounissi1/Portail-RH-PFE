@@ -1,0 +1,176 @@
+<section style="background-color: #eee;">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col">
+        <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a routerLink="/profile"><i class="fas fa-user-circle"></i> Profile</a></li>
+
+          </ol>
+        </nav>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card mb-4">
+          <div class="card-body text-center">
+            <input type="file" (change)="onFileSelected($event)">
+            <img *ngIf="imageUrl" [src]="imageUrl" width="300" height="300">
+
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="row mb-3">
+              <div class="col-sm-3">
+                <i class="fas fa-user"></i> FirstName
+              </div>
+              <div class="col-sm-9" >
+                <p class="text-muted mb-0">{{ currentUser?.username }}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row mb-3">
+              <div class="col-sm-3">
+                <i class="fas fa-user"></i> LastName
+              </div>
+              <div class="col-sm-9" >
+                <p class="text-muted mb-0">{{ currentUser?.lastName }}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row mb-3">
+              <div class="col-sm-3">
+                <i class="fas fa-envelope"></i> Email
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{ currentUser?.email }}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row mb-3">
+              <div class="col-sm-3">
+                <i class="fas fa-users"></i> Roles
+              </div>
+              <div class="col-sm-9">
+                <ul *ngIf="currentUser" class="list-unstyled">
+                  <li *ngFor="let role of currentUser.roles">
+                    {{ role.name }}
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <hr>
+            <div class="row mb-3">
+              <div class="col-sm-3">
+                <i class="fas fa-mobile-alt"></i> Mobile
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{ currentUser?.phoneNumber }}</p>
+              </div>
+            </div>
+
+                <div class="col-sm-6" *ngIf="editingPhoneNumber">
+                  <input type="text" class="form-control" [(ngModel)]="newPhoneNumber">
+                </div>
+                <div class="col-sm-3">
+                  <button *ngIf="!editingPhoneNumber" class="btn btn-primary" (click)="editPhoneNumber()">Edit Mobile</button>
+                  <button *ngIf="editingPhoneNumber" class="btn btn-success" (click)="savePhoneNumber()">Save Mobile</button>
+                </div>
+
+            <hr>
+
+            <div class="row mb-3">
+              <div class="col-sm-3">
+                <i class="fas fa-mobile-alt"></i> Service
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{  currentUser?.service}}</p>
+              </div>
+            </div>
+
+            <hr>
+
+            <div class="row mb-3">
+              <div class="col-sm-3">
+                <i class="fas fa-mobile-alt"></i> Address
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{ currentUser?.address}}</p>
+              </div>
+            </div>
+
+            <hr>
+
+            <div class="row mb-3">
+              <div class="col-sm-3">
+                <i class="fas fa-mobile-alt"></i> Poste
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{ currentUser?.post }}</p>
+              </div>
+            </div>
+
+            <hr>
+
+            <div class="row mb-3">
+              <div class="col-sm-3">
+                <i class="fas fa-mobile-alt"></i> Civility
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{  currentUser?.civility }}</p>
+              </div>
+            </div>
+
+            <hr>
+
+
+            <div class="row mb-3">
+              <div class="col-sm-3">
+                <i class="fas fa-mobile-alt"></i> Birthday
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{  currentUser?.birthDate  | date:'yMMMd'}}</p>
+              </div>
+            </div>
+
+           <hr>
+
+            <div class="row mb-3">
+              <div class="col-sm-3">
+                <i class="fas fa-envelope"></i> Date Of Hiring
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{ currentUser?.dateOfHiring | date:'yMMMd'}}</p>
+              </div>
+            </div>
+
+           <hr>
+
+            <div class="row mb-3">
+              <div class="col-sm-3">
+                <i class="fas fa-envelope"></i> Start Date Employee
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{ currentUser?.startDateEmployee | date:'yMMMd'}}</p>
+              </div>
+            </div>
+              <hr>
+
+              <div class="row mb-3">
+                <div class="col-sm-3">
+                  <i class="fas fa-envelope"></i> Password
+                </div>
+                <div class="col-sm-6">
+                  <input type="password" class="form-control" [(ngModel)]="newPassword" *ngIf="editingPassword">
+                  <span *ngIf="!editingPassword">{{ currentUser.password }}</span>
+                </div>
+                <div class="col-sm-3">
+                  <button *ngIf="!editingPassword" class="btn btn-primary" (click)="editPassword()">Edit Password</button>
+                  <button *ngIf="editingPassword" class="btn btn-success" (click)="savePassword()">Save Password</button>
+                </div>
+              </div>
+          </div>

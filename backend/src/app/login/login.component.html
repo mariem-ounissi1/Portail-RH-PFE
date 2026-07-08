@@ -1,0 +1,72 @@
+<section class="vh-100">
+  <div class="container-fluid h-100">
+    <div class="row d-flex align-items-center justify-content-center h-100">
+      <div class="col-md-8 col-lg-7 col-xl-6" style="height: 500px; width: 800px;">
+        <img src=".\assets\images\logo.png" class="img-fluid" alt="Phone image" style="height: 100%; width: auto;">
+      </div>
+      <div class="col-md-8 col-lg-5 col-xl-5">
+        <form
+          *ngIf="!isLoggedIn"
+          name="form"
+          (ngSubmit)="f.form.valid && onSubmit()"
+          #f="ngForm"
+          novalidate
+        >
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              class="form-control rounded-pill"
+              name="username"
+              [(ngModel)]="form.username"
+              required
+              #username="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && username.errors }"
+            />
+            <div *ngIf="username.errors && f.submitted" class="invalid-feedback">
+              Username is required!
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              class="form-control rounded-pill"
+              name="password"
+              [(ngModel)]="form.password"
+              required
+              minlength="6"
+              #password="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && password.errors }"
+            />
+            <div *ngIf="password.errors && f.submitted" class="invalid-feedback">
+              <div *ngIf="password.errors['required']">Password is required</div>
+              <div *ngIf="password.errors['minlength']">
+                Password must be at least 6 characters
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary btn-block rounded-pill">
+              Login
+            </button>
+          </div>
+          <div class="form-group">
+            <div *ngIf="f.submitted && isLoginFailed" class="alert alert-danger" role="alert">
+              Login failed: {{ errorMessage }}
+            </div>
+          </div>
+        </form>
+
+        <div class="welcome-container" *ngIf="isLoggedIn">
+          <h2 class="welcome-message">welcome <i>{{ username }}.</i></h2>
+        </div>
+        <div class="form-group link-container">
+          <a *ngIf="isLoggedIn && roles.includes('ROLE_USER')" href="/home">Access to Home</a>
+          <a *ngIf="isLoggedIn && roles.includes('ROLE_ADMIN')" href="/home/dashbord">Access to Admin Dashboard</a>
+          <a *ngIf="isLoggedIn && roles.includes('ROLE_MODERATOR')" href="/home/dashboard-moderator">Access to Moderator Dashboard</a>
+        </div>
+    </div>
+    </div>
+  </div>
+</section>

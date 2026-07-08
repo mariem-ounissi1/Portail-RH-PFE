@@ -1,0 +1,32 @@
+<div class="container">
+  <form [formGroup]="serviceForm" (ngSubmit)="createService()">
+    <div class="form-group">
+      <label for="serviceName">Service Name</label>
+      <input id="serviceName" formControlName="serviceName" class="form-control" />
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary">Create Service</button>
+  </form>
+
+  <div class="mt-5">
+    <h3>Service List</h3>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Service Name</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let service of services">
+          <td>{{ service.id }}</td>
+          <td>{{ service.serviceName }}</td>
+          <td>
+            <button class="btn btn-danger" (click)="deleteService(service.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<div id="layout-wrapper" [ngClass]="{ 'dark': isDarkMode }">
+  <app-navbar (toggleTheme)="toggleTheme()"></app-navbar>
+  <app-sidbar [isDarkMode]="isDarkMode"></app-sidbar>
+  <div class="main-content">
+    <div class="page-content">
+        <div class="container-fluid">
+          <router-outlet></router-outlet>
+        </div>
+    </div>
+    <app-footer></app-footer>
+  </div>
+</div>

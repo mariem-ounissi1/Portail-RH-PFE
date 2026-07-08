@@ -1,0 +1,37 @@
+<!-- Use CSS grid to layout the charts -->
+<div class="chart-grid">
+  <div class="chart-item">
+    <p-chart type="pie" [data]="basicDataLeavemod" [options]="basicOptionsleavemod"></p-chart>
+  </div>
+  <div class="chart-item">
+    <p-chart type="bar" [data]="basicDataAuthorizationmod" [options]="basicOptionsAuthorizationmod"></p-chart>
+  </div>
+  <div class="chart-item chart-item-full">
+    <p-chart type="doughnut" [data]="basicDataProfessionalmod" [options]="basicOptionsProfessionalmod"></p-chart>
+  </div>
+</div>
+
+<!-- Add CSS styles -->
+<style>
+  .chart-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+    align-items: center; /* align items vertically in the center */
+  }
+
+  .chart-item {
+    height: 500px;
+    width: 500px;
+  }
+
+  .chart-item:nth-child(2) {
+    height: 700px;
+  }
+
+  .chart-item.chart-item-full {
+    height: 500px;
+    width: 500px;
+    grid-column: 1 / -1; /* span entire row */
+  }
+</style>

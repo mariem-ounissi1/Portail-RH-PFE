@@ -1,0 +1,183 @@
+<div class="row">
+  <div class="col-lg-12">
+      <div class="card">
+          <div class="card-header">
+              <h4 class="card-title mb-0">Add, Edit &amp; Disable/Enable</h4>
+          </div><!-- end card header -->
+
+          <div class="card-body">
+              <div class="listjs-table" id="customerList">
+                  <div class="row g-4 mb-3">
+                      <div class="col-sm-auto">
+                          <div>
+                              <button routerLink="/home/register" type="button" class="btn btn-success add-btn" id="create-btn">
+                                  <i class="ri-add-line align-bottom me-1"></i> Add
+                              </button>
+                          </div>
+                      </div>
+                      <div class="col-sm">
+                          <div class="d-flex justify-content-sm-end">
+                              <div class="search-box ms-2">
+                                  <input type="text" class="form-control search" placeholder="Search..." (input)="filterUsers($event)">
+                                  <i class="ri-search-line search-icon"></i>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="table-responsive table-card mt-3 mb-1">
+                      <table class="table align-middle table-nowrap" id="customerTable">
+                          <thead class="table-light">
+                              <tr>
+                                  <th class="sort" data-sort="customer_name">First Name</th>
+                                  <th class="sort" data-sort="lastName">Last Name</th>
+                                  <th class="sort" data-sort="email">Email</th>
+                                  <th class="sort" data-sort="phone">Phone</th>
+                                  <th class="sort" data-sort="date">Birth Date</th>
+                                  <th class="sort" data-sort="civility">Civility</th>
+                                  <th class="sort" data-sort="address">Address</th>
+                                  <th class="sort" data-sort="poste">Poste</th>
+                                  <th class="sort" data-sort="service">Service</th>
+                                  <th class="sort" data-sort="startDateEmployee">start Date Employee</th>
+                                  <th class="sort" data-sort="DateOfHiring">Date Of Hiring</th>
+                                  <th class="sort" data-sort="status">Status</th>
+                                  <th class="sort" data-sort="action">Action</th>
+                              </tr>
+                          </thead>
+                          <tbody class="list form-check-all">
+                              <tr *ngFor="let u of filteredUsers">
+                                  <td class="customer_name">{{u.username}}</td>
+                                  <td class="lastName">{{u.lastName}}</td>
+                                  <td class="email">{{u.email}}</td>
+                                  <td class="phoneNumber">{{u.phoneNumber}}</td>
+                                  <td class="birthDate">{{u.birthDate | date:'yMMMd' }}</td>
+                                  <td class="civility">{{u.civility}}</td>
+                                  <td class="address">{{u.address}}</td>
+                                  <td class="post">{{u.post}}</td>
+                                  <td class="service">{{u.service}}</td>
+                                  <td class="startDateEmployee">{{u.startDateEmployee}}</td>
+                                  <td class="dateOfHiring">{{u.dateOfHiring}}</td>
+                                  <td class="status">
+                                      <span class="badge" [ngClass]="{'bg-success-subtle text-success': u.enabled, 'bg-danger-subtle text-danger': !u.enabled}">
+                                          {{u.enabled ? 'Active' : 'Blocked'}}
+                                      </span>
+                                  </td>
+                                  <td>
+                                      <div class="d-flex gap-2">
+                                          <div class="edit">
+                                              <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#showModal" (click)="recupererUser(u)">Edit</button>
+                                          </div>
+
+                                          <div>
+                                              <button class="btn btn-sm btn-warning" *ngIf="u.enabled" (click)="disableUser(u.id)">Disable</button>
+                                              <button class="btn btn-sm btn-primary" *ngIf="!u.enabled" (click)="enableUser(u.id)">Enable</button>
+                                          </div>
+                                      </div>
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                      <div class="noresult" *ngIf="!filteredUsers.length">
+                          <div class="text-center">
+                              <h5 class="mt-2">Sorry! No Result Found</h5>
+                              <p class="text-muted mb-0">We've searched more than 150+ Orders We did not find any orders for your search.</p>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="d-flex justify-content-end">
+                      <div class="pagination-wrap hstack gap-2">
+                          <a class="page-item pagination-prev disabled" href="javascript:void(0);">Previous</a>
+                          <ul class="pagination listjs-pagination mb-0">
+                              <li class="active"><a class="page" href="#" data-i="1" data-page="8">1</a></li>
+                          </ul>
+                          <a class="page-item pagination-next" href="javascript:void(0);">Next</a>
+                      </div>
+                  </div>
+              </div>
+          </div><!-- end card -->
+      </div>
+      <!-- end col -->
+  </div>
+  <!-- end col -->
+</div>
+
+<div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="exampleModalLabel" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+          <div class="modal-header bg-light p-3">
+              <h5 class="modal-title" id="exampleModalLabel">Edit Customer</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
+          </div>
+          <form class="tablelist-form" autocomplete="off" [formGroup]="editUSerForm">
+              <div class="modal-body">
+                  <div class="mb-3">
+                      <label for="customername-field" class="form-label">FirstName</label>
+                      <input formControlName="username" type="text" id="customername-field" class="form-control" placeholder="Enter Name" required="">
+                      <div class="invalid-feedback">Please enter a customer name.</div>
+                  </div>
+                  <div class="mb-3">
+                      <label for="lastName-fields" class="form-label">Last Name</label>
+                      <input formControlName="lastName" type="text" id="lastName" class="form-control" placeholder="Enter lastName" required="">
+                      <div class="invalid-feedback">Please enter a Last Name .</div>
+                  </div>
+
+                  <div class="mb-3">
+                      <label for="email-field" class="form-label">Email</label>
+                      <input formControlName="email" type="email" id="email-field" class="form-control" placeholder="Enter Email" required="">
+                      <div class="invalid-feedback">Please enter an email.</div>
+                  </div>
+
+                  <div class="mb-3">
+                      <label for="phone-field" class="form-label">Phone</label>
+                      <input formControlName="phoneNumber" type="text" id="phone-field" class="form-control" placeholder="Enter Phone no." required="">
+                      <div class="invalid-feedback">Please enter a phone.</div>
+                  </div>
+
+                  <div class="mb-3">
+                      <label for="date-field" class="form-label">Birth Date</label>
+                      <input formControlName="birthDate" type="date" id="date-field" class="form-control" placeholder="Select Date" required="">
+                      <div class="invalid-feedback">Please select a date.</div>
+                  </div>
+
+                  <div class="mb-3">
+                      <label for="civility-field" class="form-label">Civility</label>
+                      <select formControlName="civility" class="form-control" id="civility-field" required="">
+                          <option value="single">Single</option>
+                          <option value="married">Married</option>
+                      </select>
+                  </div>
+
+                  <div class="mb-3">
+                      <label for="address-field" class="form-label">Address</label>
+                      <input formControlName="address" type="text" id="address-field" class="form-control" placeholder="Enter Address" required="">
+                      <div class="invalid-feedback">Please enter an address.</div>
+                  </div>
+
+                  <div class="mb-3">
+                      <label for="startDateEmployee-field" class="form-label">Start Date Of Employee</label>
+                      <input formControlName="startDateEmployee" type="date" id="startDateEmployee-field" class="form-control" placeholder="Enter start date employee" required="">
+                      <div class="invalid-feedback">Please enter a start date of employee .</div>
+                  </div>
+                  <div class="mb-3">
+                      <label for="dateOfHiring-field" class="form-label">Date of Hiring</label>
+                      <input formControlName="dateOfHiring" type="date" id="dateOfHiring-field" class="form-control" placeholder="Enter date Of Hiring" required="">
+                      <div class="invalid-feedback">Please enter a date Of Hiring.</div>
+                  </div>
+
+                  <div class="mb-3">
+                      <label for="roles-field" class="form-label">Roles</label>
+                      <input formControlName="roles" type="text" id="roles-field" class="form-control" placeholder="Enter roles" required="">
+                      <div class="invalid-feedback">Please enter roles.</div>
+                  </div>
+              </div>
+              <div class="modal-footer" style="display: block;">
+                  <div class="hstack gap-2 justify-content-end">
+                      <button id="closeModal" #closeModal type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-success" id="add-btn" (click)="editUser()">Update</button>
+                  </div>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>

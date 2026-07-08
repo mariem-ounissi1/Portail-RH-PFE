@@ -1,0 +1,39 @@
+
+<div>
+  <h2> liste Authorization Request </h2>
+  <table class="table table-striped table-bordered table-hover table-sm">
+    <thead>
+      <tr>
+
+        <th>Position</th>
+        <th>Service</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Reasons</th>
+        <th>Authorization Type</th>
+        <th>File</th>
+        <th>Date Of Creation</th>
+        <th>Status</th>
+        <th>Download Authorization Request</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let request of authorizationRequest">
+
+        <td>{{ request.position }}</td>
+        <td>{{ request.service }}</td>
+        <td>{{ request.date_debut  | date:'yMMMd' }}</td>
+        <td>{{ request.date_fin | date:'yMMMd'}}</td>
+        <td>{{ request.reason }}</td>
+        <td>{{ request.type }}</td>
+        <td>  <button (click)="downloadBase64PDF(request.file1, request.user.username)" *ngIf=" request.file1" > download </button></td>
+        <td>{{request.dateOfCreation | date:'short'}}</td>
+        <td>{{ request.status }}</td>
+        <td>  <button *ngIf="request.status === 'Approved'" (click)="downloadPDF(request)">Download PDF</button>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+

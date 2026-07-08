@@ -1,0 +1,10 @@
+
+.sidebar.light {
+  background-color: var(--bgColor_light);
+  color: var(--textColor_light);
+}
+
+.sidebar.dark {
+  background-color: var(--bgColor_dark);
+  color: var(--textColor_dark);
+}

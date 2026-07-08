@@ -1,0 +1,34 @@
+<div>
+  <h2>Loan Or Advanced Requests</h2>
+  <table class="table table-striped table-bordered table-hover table-sm">
+    <thead>
+      <tr>
+
+        <th>Address</th>
+        <th>Date of Creation</th>
+        <th>Desired Amount</th>
+        <th>Loan Type</th>
+        <th>File</th>
+        <th>Status</th>
+        <th>Download Loan Request</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let request of loanRequests">
+
+        <td>{{ request.address }}</td>
+
+        <td>{{ request.dateOfCreation | date:'short'}}</td>
+        <td>{{ request.desiredAmount }}</td>
+        <td>{{ request.loanType }}</td>
+        <td>  <button  *ngIf=" request.file1" (click)="downloadBase64PDF(request.file1, request.user.username)" > download </button></td>
+        <td>{{ request.status }}</td>
+        <td>  <button *ngIf="request.status === 'Approved'" (click)="downloadPDF(request)">Download PDF</button>
+      </tr>
+    </tbody>
+
+  </table>
+</div>
+
+

@@ -1,0 +1,38 @@
+
+
+<div *ngIf="professionalRequest.length > 0">
+  <h2>Professional Mutation Requests</h2>
+  <table table class="table table-striped table-bordered table-hover table-sm">
+    <thead>
+      <tr>
+
+        <th>Current Position</th>
+        <th>Reason for Mutation</th>
+        <th>Proposed Date of Mutation</th>
+        <th>date Of Creation</th>
+        <th>File</th>
+        <th>Status</th>
+        <th>Download Loan Request</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let application of professionalRequest">
+
+        <td>{{ application.currentPosition }}</td>
+        <td>{{ application.reasonForMutation }}</td>
+        <td>{{ application.proposedDateOfMutation | date:'yMMMd' }}</td>
+
+        <td>{{ application.dateOfCreation  | date:'short'}}</td>
+        <td>  <button (click)="downloadBase64PDF(application.file1, application.user.username)" *ngIf=" application.file1" > download </button></td>
+        <td>{{ application.status }}</td>
+
+        <td>  <button *ngIf="application.status === 'Approved'" (click)="downloadPDF(application)">Download PDF</button>
+
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="professionalRequest.length === 0">
+  <p>No Professional Mutation Request found.</p>
+</div>

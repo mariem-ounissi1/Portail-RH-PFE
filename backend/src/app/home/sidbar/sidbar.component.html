@@ -1,0 +1,401 @@
+<div class="app-menu navbar-menu">
+  <!-- LOGO -->
+  <div class="navbar-brand-box">
+
+      <!-- Light Logo-->
+      <a href="index.html" class="logo logo-light">
+
+          <span class="logo-lg">
+              <img src="assets/images/arabe_soft.png" alt="" height="30">
+          </span>
+      </a>
+
+  </div>
+
+  <div id="scrollbar">
+      <div class="container-fluid">
+
+          <div id="two-column-menu">
+          </div>
+          <ul class="navbar-nav" id="navbar-nav">
+              <li class="menu-title"><span data-key="t-menu">Menu</span></li>
+
+            <!-- end Dashboard Menu -->
+
+
+
+              <li class="nav-item" *ngIf="showApplyLeave">
+                  <a class="nav-link menu-link" href="#sidebarLeave" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
+                      <i class="ri-calendar-event-line"></i> <span data-key="t-dashboards">Leave Request</span>
+                  </a>
+                  <div class="collapse menu-dropdown" id="sidebarLeave">
+                      <ul class="nav nav-sm flex-column">
+                          <li class="nav-item">
+                              <a href="/home/leave" class="nav-link" data-key="t-analytics"> Leave Request Form </a>
+                          </li>
+                      </ul>
+
+                      <ul class="nav nav-sm flex-column">
+                          <li class="nav-item">
+                              <a href="/home/leave-applications" class="nav-link" data-key="t-analytics"> Leave List </a>
+                          </li>
+                      </ul>
+                  </div>
+              </li>
+
+              <li class="nav-item" *ngIf="showApplyLoans">
+                  <a class="nav-link menu-link" href="#sidebarLons" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">
+                      <i class="ri-calendar-event-line"></i> <span data-key="t-apps">Loan Request</span>
+                  </a>
+                  <div class="collapse menu-dropdown" id="sidebarLons">
+
+                      <ul class="nav nav-sm flex-column">
+                          <li class="nav-item">
+                              <a href="/home/loan-request" class="nav-link" data-key="t-analytics"> Loan or Advanced Salary Request </a>
+                          </li>
+                      </ul>
+                      <ul class="nav nav-sm flex-column">
+                        <li class="nav-item">
+                            <a href="/home/loans-liste" class="nav-link" data-key="t-analytics"> Loan or Advanced Salary List Request </a>
+                        </li>
+                    </ul>
+                  </div>
+              </li>
+
+
+              <li class="nav-item" *ngIf="showAuthorizationRequest">
+                  <a class="nav-link menu-link" href="#sidebarPages" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarPages">
+                      <i class="ri-calendar-event-line"></i> <span data-key="t-pages">Authorization Request</span>
+                  </a>
+                  <div class="collapse menu-dropdown" id="sidebarPages">
+                      <ul class="nav nav-sm flex-column">
+                          <li class="nav-item">
+                              <a href="/home/authorizaion" class="nav-link" data-key="t-starter"> Authorization Request Form </a>
+                          </li>
+                          <li class="nav-item">
+                              <a href="/home/authorizaion-liste" class="nav-link" data-key="t-team">Authorization Request List </a>
+                          </li>
+                      </ul>
+                  </div>
+              </li>
+
+ <li class="nav-item" *ngIf="showProfessionalRequest">
+                  <a class="nav-link menu-link" href="#sidebarUI" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarUI">
+                      <i class="ri-calendar-event-line"></i> <span data-key="t-base-ui">Professional Mutation Request</span>
+                  </a>
+                  <div class="collapse menu-dropdown mega-dropdown-menu" id="sidebarUI">
+                      <div class="row">
+                          <div class="col-lg-4">
+                              <ul class="nav nav-sm flex-column">
+                                  <li class="nav-item">
+                                      <a href="/home/professional-request" class="nav-link" data-key="t-alerts">Professional Mutation Request</a>
+                                  </li>
+                                  <li class="nav-item">
+                                      <a href="/home/professional-request-liste" class="nav-link" data-key="t-badges">Professional Mutation Request List</a>
+                                  </li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+              </li>
+
+              <li class="nav-item" *ngIf="showPersonalChangeRequest">
+                  <a class="nav-link menu-link" href="#sidebarAdvanceUI" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarAdvanceUI">
+                      <i class="ri-calendar-event-line"></i> <span data-key="t-advance-ui">Personal Change Request</span>
+                  </a>
+                  <div class="collapse menu-dropdown" id="sidebarAdvanceUI">
+                      <ul class="nav nav-sm flex-column">
+                          <li class="nav-item">
+                              <a href="/home/personal" class="nav-link" data-key="t-sweet-alerts">Personal Change Request</a>
+                          </li>
+                          <li class="nav-item">
+                              <a href="/home/personal-change-liste" class="nav-link" data-key="t-nestable-list">Personal Change Request List</a>
+                          </li>
+                      </ul>
+                  </div>
+              </li>
+
+                      <li class="nav-item" *ngIf="showAdministrativeRequest">
+                <a class="nav-link menu-link" href="#sidebarAdministrativeRequest" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarPages">
+                    <i class="ri-calendar-event-line"></i> <span data-key="t-pages"> Administrative Request</span>
+                </a>
+                <div class="collapse menu-dropdown" id="sidebarAdministrativeRequest">
+                    <ul class="nav nav-sm flex-column">
+                        <li class="nav-item">
+                            <a href="/home/administrativeRequest" class="nav-link" data-key="t-starter">Administrative Request </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/home/ListadministrativeRequest" class="nav-link" data-key="t-team">Administrative Request List </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+
+
+              <li class="nav-item" *ngIf="approvalManagement">
+                  <a class="nav-link menu-link" href="#sidebarLanding" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLanding">
+                      <i class="ri-file-list-line"></i> <span data-key="t-landing">Leave Management</span>
+                  </a>
+                  <div class="collapse menu-dropdown" id="sidebarLanding">
+                      <ul class="nav nav-sm flex-column">
+                          <li class="nav-item">
+                              <a href="/home/leave-approvals" class="nav-link" data-key="t-one-page">leave Managment</a>
+                          </li>
+                      </ul>
+                  </div>
+              </li>
+
+
+
+
+
+
+              <li class="nav-item" *ngIf="approvalLeaveManagementModerator">
+                  <a class="nav-link menu-link" href="#sidebarForms" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarForms">
+                      <i class="ri-file-list-3-line"></i> <span data-key="t-forms">Leave Management</span>
+                  </a>
+                  <div class="collapse menu-dropdown" id="sidebarForms">
+                      <ul class="nav nav-sm flex-column">
+                          <li class="nav-item">
+                              <a href="/home/leave-Moderator-approvals" class="nav-link" data-key="t-basic-elements">Leave Management
+                                  </a>
+                          </li>
+
+                      </ul>
+                  </div>
+              </li>
+
+
+
+
+
+
+
+
+
+              <li class="nav-item" *ngIf="approvalsAuthorizationModerator">
+                  <a class="nav-link menu-link" href="#sidebarForms" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarForms">
+                      <i class="ri-file-list-3-line"></i> <span data-key="t-forms">Authorizations Management</span>
+                  </a>
+                  <div class="collapse menu-dropdown" id="sidebarForms">
+                      <ul class="nav nav-sm flex-column">
+                          <li class="nav-item">
+                              <a href="/home/moderator-authorizaion-approvals" class="nav-link" data-key="t-basic-elements">Authorizations Management
+                                  </a>
+                          </li>
+
+                      </ul>
+                  </div>
+              </li>
+
+
+              <li class="nav-item" *ngIf="approvalsAuthorization">
+                  <a class="nav-link menu-link" href="#sidebarForms" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarForms">
+                      <i class="ri-file-list-3-line"></i> <span data-key="t-forms">Authorizations Management</span>
+                  </a>
+                  <div class="collapse menu-dropdown" id="sidebarForms">
+                      <ul class="nav nav-sm flex-column">
+                          <li class="nav-item">
+                              <a href="/home/authorizaion-approvals" class="nav-link" data-key="t-basic-elements">Authorizations Management
+                                  </a>
+                          </li>
+
+                      </ul>
+                  </div>
+              </li>
+
+
+
+
+
+              <li class="nav-item" *ngIf="approvalsPersonalChange">
+                  <a class="nav-link menu-link" href="#sidebarLanding" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLanding">
+                      <i class="ri-file-list-line"></i> <span data-key="t-landing">Personal Change Request </span>
+                  </a>
+                  <div class="collapse menu-dropdown" id="sidebarLanding">
+                      <ul class="nav nav-sm flex-column">
+                          <li class="nav-item">
+                              <a href="/home/personal-change-approvals" class="nav-link" data-key="t-one-page">Personal Change Request Management</a>
+                          </li>
+                      </ul>
+                  </div>
+              </li>
+
+
+              <li class="nav-item" *ngIf="approvalAdministrative">
+                <a class="nav-link menu-link" href="#sidebarAdminManagement" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLanding">
+                    <i class="ri-file-list-line"></i> <span data-key="t-landing">Administrative Request Management </span>
+                </a>
+                <div class="collapse menu-dropdown" id="sidebarAdminManagement">
+                    <ul class="nav nav-sm flex-column">
+                        <li class="nav-item">
+                            <a href="/home/administrative-approvals" class="nav-link" data-key="t-one-page">Administrative Request Managment</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+
+
+
+              <li class="nav-item" *ngIf="approvalsProfessionalModerator">
+                  <a class="nav-link menu-link" href="#sidebarMaps" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarIcons">
+                      <i class="ri-file-list-3-line"></i> <span data-key="t-maps">Professional Mutation Management</span>
+                  </a>
+                  <div class="collapse menu-dropdown" id="sidebarMaps">
+                      <ul class="nav nav-sm flex-column">
+                          <li class="nav-item">
+                              <a href="/home/moderator-professional-request" class="nav-link" data-key="t-line-awesome">
+                                Professional Mutation Management
+                              </a>
+                          </li>
+                      </ul>
+                  </div>
+              </li>
+
+
+
+
+
+
+              <li class="nav-item" *ngIf="approvalsProfessionalAdmin">
+                  <a class="nav-link menu-link" href="#sidebarMaps" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarIcons">
+                      <i class="ri-file-list-3-line"></i> <span data-key="t-maps">Professional Mutation Request Management </span>
+                  </a>
+                  <div class="collapse menu-dropdown" id="sidebarMaps">
+                      <ul class="nav nav-sm flex-column">
+                          <li class="nav-item">
+                              <a href="home/admin-professional-request" class="nav-link" data-key="t-line-awesome">
+                                  Professional Mutation Request Management
+                              </a>
+                          </li>
+                      </ul>
+                  </div>
+              </li>
+
+              <li class="nav-item" *ngIf="approvalLoans">
+                <a class="nav-link menu-link" href="#sidebarLoan" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLanding">
+                    <i class="ri-file-list-line"></i> <span data-key="t-landing">Loan or Advanced saalary Request Management </span>
+                </a>
+                <div class="collapse menu-dropdown" id="sidebarLoan">
+                    <ul class="nav nav-sm flex-column">
+                        <li class="nav-item">
+                            <a href="/home/loan-requests" class="nav-link" data-key="t-one-page">Loan or Advanced saalary Request</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item" *ngIf="registerUser">
+              <a class="nav-link menu-link" href="#sidebarCharts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarCharts">
+                   <i class="ri-user-line"></i> <span data-key="t-charts"> Users</span>
+              </a>
+              <div class="collapse menu-dropdown" id="sidebarCharts">
+                  <ul class="nav nav-sm flex-column">
+
+                      <li class="nav-item" *ngIf="registerUser">
+                          <a href="/home/register" class="nav-link" data-key="t-chartjs"> New user</a>
+                      </li>
+
+                  </ul>
+                  <ul class="nav nav-sm flex-column">
+
+                    <li class="nav-item" *ngIf="GestionUser">
+                        <a href="/home/gestionUser" class="nav-link" data-key="t-chartjs"> Modifiy Information</a>
+                    </li>
+
+                </ul>
+              </div>
+          </li>
+          <li class="nav-item" *ngIf="showModeratorDashboard"  >
+            <a class="nav-link menu-link" href="#az" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="az">
+                 <i class="ri-bar-chart-2-line"></i> <span data-key="t-maps">Dashboard</span>
+            </a>
+            <div class="collapse menu-dropdown" id="az">
+                <ul class="nav nav-sm flex-column">
+                    <li class="nav-item">
+                        <a href="/home/dashboard-moderator" class="nav-link" data-key="t-google">
+                        Statistics
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </li>
+
+
+              <li class="nav-item" *ngIf="showdashboard"  >
+                  <a class="nav-link menu-link" href="#az" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="az">
+                       <i class="ri-bar-chart-2-line"></i> <span data-key="t-maps">Dashboard</span>
+                  </a>
+                  <div class="collapse menu-dropdown" id="az">
+                      <ul class="nav nav-sm flex-column">
+                          <li class="nav-item">
+                              <a href="/home/dashbord" class="nav-link" data-key="t-google">
+                              Statistics
+                              </a>
+                          </li>
+
+                      </ul>
+                  </div>
+              </li>
+              <li class="nav-item" *ngIf="createService">
+                <a class="nav-link menu-link" href="#sidebarAdvanceUI" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarAdvanceUI">
+                    <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Services</span>
+                </a>
+                <div class="collapse menu-dropdown" id="sidebarAdvanceUI">
+                    <ul class="nav nav-sm flex-column">
+                        <li class="nav-item">
+                            <a href="/home/services-create" class="nav-link" data-key="t-sweet-alerts">Create Service
+                                </a>
+                        </li>
+                        <li class="nav-item"*ngIf="listService">
+                            <a href="/home/service-list" class="nav-link" data-key="t-nestable-list">Service List
+                                </a>
+                        </li>
+                        </ul>
+                </div>
+            </li>
+
+              <li class="nav-item" *ngIf="isLoggedIn" (click)="logout()">
+                  <a class="nav-link menu-link" href="/logout" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarForms">
+                      <i class="ri-logout-box-line"></i> <span data-key="t-forms">Logout</span>
+                  </a>
+              </li>
+
+
+                      </ul>
+                  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <!-- Sidebar -->
+  </div>
+
+  <div class="sidebar-background"></div>
+</div>
